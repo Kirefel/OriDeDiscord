@@ -1,0 +1,6 @@
+{
+    "name": "Discord",
+    "version": "v1.0.0",
+    "preload": [],
+    "entrypoint": [ "OriDeDiscord.dll" ]
+}
