@@ -1,10 +1,11 @@
-﻿using System.Runtime.InteropServices;
-using System;
+﻿using System;
+using System.IO;
+using System.Reflection;
+using System.Runtime.InteropServices;
 using BaseModLib;
 using HarmonyLib;
 using OriDeModLoader;
-using System.Reflection;
-using System.IO;
+using UnityEngine;
 
 namespace OriDeDiscord
 {
@@ -16,6 +17,12 @@ namespace OriDeDiscord
 
         [DllImport("Kernel32.dll")]
         private static extern IntPtr LoadLibrary(string path);
+
+        public DiscordMod()
+        {
+            IPC.RegisterListener("Discord.ActivityDetails", SetActivityDetailsFunc);
+        }
+
 
         public void Init()
         {
@@ -29,7 +36,14 @@ namespace OriDeDiscord
 
         public void Unload()
         {
+            UnityEngine.Object.Destroy(DiscordController.Instance.gameObject);
+            IPC.UnregisterListener("Discord.ActivityDetails", SetActivityDetailsFunc);
+        }
 
+        private void SetActivityDetailsFunc(string key, object value)
+        {
+            Debug.Log("Updatin activity details");
+            Functions.getDetails = value as Func<string>;
         }
     }
 }

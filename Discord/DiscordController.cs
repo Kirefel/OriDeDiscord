@@ -41,7 +41,7 @@ namespace OriDeDiscord
 
             lastActivity = new Activity
             {
-                State = "In menus"
+                Details = "In menus"
             };
 
             DiscordEnabled = true;
@@ -81,6 +81,7 @@ namespace OriDeDiscord
                 return;
 
             var activity = GetCurrentActivity();
+            activity.Assets.SmallImage = "https://cdn.discordapp.com/app-icons/425440642173239296/a3b78d910a0b76981ed977437ebc970c.webp";
 
             discord.GetActivityManager().UpdateActivity(activity, result =>
             {
@@ -102,7 +103,7 @@ namespace OriDeDiscord
 
                     return new Activity
                     {
-                        Details = "In game",
+                        Details = Functions.getDetails(),
                         State = location,
                         Timestamps = new ActivityTimestamps
                         {
@@ -113,13 +114,13 @@ namespace OriDeDiscord
                 case GameStateMachine.State.Prologue:
                     return new Activity
                     {
-                        Details = "Watching the prologue"
+                        Details = Functions.getDetails()
                     };
 
                 default:
                     return new Activity
                     {
-                        Details = "In menus"
+                        Details = Functions.getDetails()
                     };
             }
         }
