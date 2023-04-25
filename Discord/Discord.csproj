@@ -16,7 +16,7 @@
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Lib.Harmony" Version="2.0.2" />
-    <PackageReference Include="OriDeModLoader" Version="0.8.0-alpha" />
+    <PackageReference Include="OriDeModLoader" Version="0.8.1-alpha" />
   </ItemGroup>
   <ItemGroup>
     <None Update="discord_game_sdk.dll">
