@@ -24,7 +24,7 @@ public class Plugin : BaseUnityPlugin
 
     void Awake()
     {
-        LoadLibrary(this.GetAssetPath("discord_game_sdk.dll"));
+        LoadLibrary(this.GetAssetPath("lib", "discord_game_sdk.dll"));
 
         GetCurrentActivity = GetCurrentActivityDefault;
         GetActivityDetails = GetActivityDetailsDefault;
@@ -103,8 +103,8 @@ public class Plugin : BaseUnityPlugin
 
         discord.GetActivityManager().UpdateActivity(activity, result =>
         {
-            if (result != Result.Ok) Debug.Log("Failed to update Discord activity: " + result);
-            else Debug.Log("Activity updated");
+            if (result != Result.Ok) Logger.LogWarning("Failed to update Discord activity: " + result);
+            else Logger.LogDebug("Activity updated");
         });
 
         lastActivity = activity;
