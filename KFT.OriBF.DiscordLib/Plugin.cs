@@ -8,6 +8,7 @@ using UnityEngine;
 namespace KFT.OriBF.DiscordLib;
 
 [BepInPlugin(PluginInfo.PLUGIN_GUID, PluginInfo.PLUGIN_NAME, PluginInfo.PLUGIN_VERSION)]
+[BepInDependency(OriModding.BF.Core.PluginInfo.PLUGIN_GUID)]
 public class Plugin : BaseUnityPlugin
 {
     public string Name => "Discord";
