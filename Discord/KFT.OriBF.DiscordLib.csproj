@@ -25,4 +25,8 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
+
+  <Target Name="Copy Assets and Dependencies" AfterTargets="Build" Condition=" '$(Configuration)' == 'Debug' and '$(OriNoCopy)' == '' and '$(OriPluginPath)' != '' ">
+    <Copy SourceFiles="$(OutDir)discord_game_sdk.dll" DestinationFolder="$(OriPluginPath)\$(AssemblyName)" />
+  </Target>
 </Project>
